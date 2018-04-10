@@ -4,11 +4,18 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="struts.objectFactory" value="spring"></constant>
-	
+
 	<package name="sharetravel" namespace="/" extends="struts-default">
-		<action name="UserAction_*" class="userAction"
-			method="{1}">
-			<result name="success">/list.html</result>
+
+		<global-exception-mappings>
+			<exception-mapping result="error"
+				exception="java.lang.RuntimeException"></exception-mapping>
+		</global-exception-mappings>
+		
+		
+		<action name="UserAction_*" class="userAction" method="{1}">
+			<result name="toIndex" type="redirect">/index.html</result>
+			<result name="error">/login.jsp</result>
 		</action>
 	</package>
 

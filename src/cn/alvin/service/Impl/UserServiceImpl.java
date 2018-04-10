@@ -12,12 +12,23 @@ import cn.alvin.service.UserService;
 @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+   
     private UserDao userDao;
 
     public User getUserByCodePassword(User user) {
-        // TODO Auto-generated method stub
-        return null;
+        
+        System.out.println("user" + user.toString());
+        System.out.println("userDao" + userDao);
+        User existUser = userDao.getByUserCode(user.getUser_code());
+        if (existUser == null) {
+            throw new  RuntimeException("用户名不存在");
+        }
+        if (!user.getUser_password().equals(existUser.getUser_password())) {
+         
+            throw new RuntimeException("密码错误");
+        }
+        
+        return existUser;
     }
 
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, readOnly = false)
@@ -25,4 +36,10 @@ public class UserServiceImpl implements UserService {
         userDao.save(user);
 
     }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+    
+    
 }

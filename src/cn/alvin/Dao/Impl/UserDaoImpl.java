@@ -11,7 +11,9 @@ import cn.alvin.domain.User;
 
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
+    
     public User getByUserCode(String userCode) {
+        
         DetachedCriteria dc = DetachedCriteria.forClass(User.class);
         dc.add(Restrictions.eq("user_code", userCode));
         

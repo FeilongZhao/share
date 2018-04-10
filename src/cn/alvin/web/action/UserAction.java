@@ -1,12 +1,16 @@
 package cn.alvin.web.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
+import cn.alvin.domain.User;
 import cn.alvin.service.UserService;
 
-public class UserAction extends ActionSupport{
+public class UserAction extends ActionSupport implements ModelDriven<User>{
     
     private UserService userService;
+    private User u = new User();
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -14,9 +18,17 @@ public class UserAction extends ActionSupport{
 
     
     public String login() throws Exception {
+       
+        System.out.println(u.toString());
+        User user = userService.getUserByCodePassword(u);
+        ActionContext.getContext().getSession().put("login_user", user);
         
-        System.out.println(userService);
-        return SUCCESS;
+        return "toIndex";
+    }
+
+
+    public User getModel() {
+        return u;
     }
     
 
