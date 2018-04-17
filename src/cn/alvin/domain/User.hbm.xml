@@ -12,5 +12,6 @@
 		<property name="user_password"  ></property>
 		<property name="user_state"  ></property>
 		<property name="user_date"></property>
+		<property name="user_phone"></property>
 	</class>
 </hibernate-mapping>

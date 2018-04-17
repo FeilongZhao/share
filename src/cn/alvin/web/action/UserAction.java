@@ -25,6 +25,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
         
         return "toIndex";
     }
+    
+    public String register() {
+        
+        userService.saveUser(u);
+        
+        return "toSetting";
+    }
 
 
     public User getModel() {

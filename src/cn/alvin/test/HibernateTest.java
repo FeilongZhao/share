@@ -16,8 +16,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.alvin.Dao.ArticleDao;
 import cn.alvin.Dao.UserDao;
+import cn.alvin.Dao.Impl.ArticleDaoImpl;
+import cn.alvin.domain.Article;
 import cn.alvin.domain.User;
+import cn.alvin.service.ArticleService;
 import cn.alvin.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,6 +34,8 @@ public class HibernateTest {
      private UserDao userDao;
      @Autowired
      private UserService userService;
+     @Autowired
+     private ArticleService articleService;
 
     @Test
     public void fun1() {
@@ -91,5 +97,30 @@ public class HibernateTest {
         user.setUser_state('y');
         user.setUser_date(new Date());
        userService.saveUser(user);
+    }
+    
+    
+    @Test
+    //测试articleDao
+    public void fun5() {
+
+        User user = new User();
+        user.setUser_code("rose");
+        user.setUser_name("jack");
+        user.setUser_password("1234");
+        user.setUser_state('y');
+        user.setUser_date(new Date());
+        user.setUser_id((long) 2);
+        Article article = new Article();
+        article.setAddress("北京");
+        article.setUrl("123");
+        article.setUrlTwo("123");
+        article.setUrlThree("123");
+        article.setArticle_user("rose");
+        article.setContent("北京");
+        article.setTitle("北京");
+        article.setUser(user);
+        articleService.saveArticle(article);
+        
     }
 }

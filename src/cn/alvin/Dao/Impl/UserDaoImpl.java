@@ -1,5 +1,6 @@
 package cn.alvin.Dao.Impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -27,6 +28,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
     public void save(User user) {
         getHibernateTemplate().save(user);
+ 
         
     }
 

@@ -54,10 +54,23 @@
 		scope="prototype">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	<bean name="articleAction" class="cn.alvin.web.action.ArticleAction"></bean>
+	
+	
 	<bean name="userService" class="cn.alvin.service.Impl.UserServiceImpl">
 	<property name="userDao" ref="userDao"></property>
 	</bean>
+	<bean name="articleService" class="cn.alvin.service.Impl.ArticleServiceImpl">
+	<property name="articleDao" ref="articleDao"></property>
+	</bean>
+	<bean name="uploadService" class="cn.alvin.service.Impl.UploadServiceImpl"></bean>
+	
 	<bean name="userDao" class="cn.alvin.Dao.Impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean name="articleDao" class="cn.alvin.Dao.Impl.ArticleDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
 </beans>

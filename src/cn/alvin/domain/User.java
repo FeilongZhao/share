@@ -23,6 +23,7 @@ public class User {
     private String user_password;
     private Character user_state;
     private Date user_date;
+    private String  user_phone;
     public Long getUser_id() {
         return user_id;
     }
@@ -58,6 +59,14 @@ public class User {
     }
     public void setUser_date(Date user_date) {
         this.user_date = user_date;
+    }
+    
+ 
+    public String getUser_phone() {
+        return user_phone;
+    }
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
     }
     @Override
     public String toString() {
